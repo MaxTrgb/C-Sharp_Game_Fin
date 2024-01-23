@@ -15,17 +15,15 @@ namespace UnitTests
         {
             int enemyAttackPower = 100;
             int CriticalChance = 0;
-            double expected = 250;
             String Name = "Warrior";
             ConsoleKeyInfo move;
             move = new ConsoleKeyInfo((char)ConsoleKey.D4, ConsoleKey.Enter, false, false, false);
 
+            double expected = 250;
             double actual = hero1.CalculateDamage(enemyAttackPower, AttackType.Physical, CriticalChance, Name, move);
 
             Assert.AreEqual(expected, actual);
-        }
-
-
+        } 
         [TestMethod]
         public void DefendTestMethodTrue()
         {
@@ -59,8 +57,16 @@ namespace UnitTests
 
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
 
+        public void StopDefendingTest()
+        {
+            hero1.StopDefending();
 
+            Boolean expected = false;
+
+            Assert.AreEqual(expected, hero1.IsDefending);
+        }
     }
 
 }
